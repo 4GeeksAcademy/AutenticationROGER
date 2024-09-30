@@ -6,14 +6,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			getMessage: async () => {
-				try{
-					
+				try {
+
 					const resp = await fetch(process.env.BACKEND_URL + "/api/hello");
 					const data = await resp.json();
 					setStore({ message: data.message });
-					
+
 					return data;
-				}catch(error){
+				} catch (error) {
 					console.log("Error loading message from backend", error);
 				}
 			},
@@ -28,8 +28,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						},
 						body: JSON.stringify({ email, password })
 					});
-			
-					if (resp.ok) {  
+
+					if (resp.ok) {
 						const data = await resp.json();
 						const token = data.token;
 						setStore({ token: token });
@@ -39,12 +39,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return false;
 					}
 				} catch (error) {
-					console.log("Error loading message from backend", error);
+					console.log("Error loading message", error);
 					return false;
 				}
 			},
 
-			
+
 			signup: async ({ email, password }) => {
 				try {
 					const resp = await fetch(`${process.env.BACKEND_URL}/api/signup`, {
@@ -61,7 +61,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 						setStore({ token: token });
 						localStorage.setItem('token', token);
-						
+
 					} else {
 						console.log("Signup failed:", data.msg);
 					}

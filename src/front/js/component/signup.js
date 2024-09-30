@@ -12,10 +12,10 @@ const Signup = () => {
         e.preventDefault();
         try {
             await actions.signup({ email, password });
-            // Redireciona para a página de login após o registro bem-sucedido
+            // Redirige para la página del Private
             navigate('/login');
         } catch (error) {
-            // Aqui você pode adicionar lógica para lidar com erros
+            // Aqui se captura el error
             console.error('Error:', error);
         }
     };
@@ -23,27 +23,22 @@ const Signup = () => {
     return (
         <div>
             <h1>Signup</h1>
-            <form onSubmit={handleSignup}>
-                <div>
-                    <label>Email:</label>
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Password:</label>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </div>
-                <button type="submit">Signup</button>
-            </form>
+            <input 
+                name="email" 
+                value={email} 
+                onChange={(e)=> setEmail(e.target.value)} 
+                placeholder="Email" 
+            />
+            <input 
+                name="password" 
+                type="password" 
+                value={password} 
+                onChange={(e)=> setPassword(e.target.value)} 
+                placeholder="Password" 
+            />
+            <button onClick={handleSignup}>
+                Entrar
+            </button>
         </div>
     );
 };
