@@ -12,7 +12,7 @@ const Signup = () => {
         e.preventDefault();
         try {
             await actions.signup({ email, password });
-            // Redirige para la página del Private
+            // Redirige para la página del Signup
             navigate('/login');
         } catch (error) {
             // Aqui se captura el error

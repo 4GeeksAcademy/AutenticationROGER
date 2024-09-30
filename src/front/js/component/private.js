@@ -12,10 +12,10 @@ const Private = () => {
         e.preventDefault();
         try {
             await actions.private({ email, password });
-            // Redireciona para a página de login após o registro bem-sucedido
+            // Redirige al private zone
             navigate('/private');
         } catch (error) {
-            // Aqui você pode adicionar lógica para lidar com erros
+            // Aqui captura de error
             console.error('Error:', error);
         }
     };
